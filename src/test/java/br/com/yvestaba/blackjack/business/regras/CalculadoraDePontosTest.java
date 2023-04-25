@@ -26,6 +26,11 @@ class CalculadoraDePontosTest {
     }
 
     @Test
+    void maoVazia(){
+        assertEquals(0, calcularMelhorPontuacao(jogador));
+    }
+
+    @Test
     void calculaSemAs(){
         var mao = asList(new Carta(OUROS, VALETE), new Carta(OUROS, DAMA));
         ReflectionTestUtils.setField(jogador, "mao", mao);
@@ -46,6 +51,13 @@ class CalculadoraDePontosTest {
         var mao = asList(new Carta(OUROS, AS), new Carta(OUROS, NOVE), new Carta(ESPADAS, NOVE));
         ReflectionTestUtils.setField(jogador, "mao", mao);
         assertEquals(19, calcularMelhorPontuacao(jogador));
+    }
+
+    @Test
+    void bust(){
+        var mao = asList(new Carta(PAUS, NOVE), new Carta(OUROS, NOVE), new Carta(ESPADAS, NOVE));
+        ReflectionTestUtils.setField(jogador, "mao", mao);
+        assertEquals(-1, calcularMelhorPontuacao(jogador));
     }
 
 }

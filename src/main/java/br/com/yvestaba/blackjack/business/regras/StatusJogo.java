@@ -10,6 +10,9 @@ public enum StatusJogo {
     GANHOU, PERDEU, EMPATOU;
 
     public static StatusJogo getStatusJogador(Jogador jogador, Apostador apostador){
+        if(StatusMao.getStatusMaoByJogador(jogador) == StatusMao.BLACKJACK){
+            return GANHOU;
+        }
         Integer pontuacaoJogador = calcularMelhorPontuacao(jogador);
         Integer pontuacaoApostador = calcularMelhorPontuacao(apostador);
         if(pontuacaoJogador > pontuacaoApostador) return GANHOU;

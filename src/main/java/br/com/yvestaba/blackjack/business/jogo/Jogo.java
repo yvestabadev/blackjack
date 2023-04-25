@@ -1,7 +1,6 @@
 package br.com.yvestaba.blackjack.business.jogo;
 
 import br.com.yvestaba.blackjack.business.materiais.Baralho;
-import br.com.yvestaba.blackjack.business.regras.CalculadoraDePontos;
 import br.com.yvestaba.blackjack.business.regras.StatusJogo;
 import br.com.yvestaba.blackjack.business.regras.StatusMao;
 
@@ -26,7 +25,7 @@ public class Jogo {
     }
 
     /**
-     *
+     * Prossegue com o jogo caso o jogador da vez queira puxar ou parar.
      * @return se tem um próximo passo
      */
     public boolean proximoPasso(boolean puxar){
@@ -43,7 +42,7 @@ public class Jogo {
         }
         jogadorDaVez = apostador;
         apostador.iniciarPuxadas(baralho);
-        if(CalculadoraDePontos.getStatusMao(apostador) == StatusMao.BUST){
+        if(StatusMao.getStatusMaoByJogador(apostador) == StatusMao.BUST){
             return false;
         }
         return true;

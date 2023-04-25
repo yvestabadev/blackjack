@@ -54,15 +54,4 @@ public class CalculadoraDePontos {
         }
         return pontuacao;
     }
-
-    public static StatusMao getStatusMao(Jogador jogador){
-        Integer pontuacao = calcularMelhorPontuacao(jogador);
-        if(pontuacao == 21){
-            return jogador.getMao().size() == 2 ? StatusMao.BLACKJACK : StatusMao.VINTE_E_UM;
-        }
-        if(pontuacao == -1){
-            return StatusMao.BUST;
-        }
-        return StatusMao.MENOR_QUE_21;
-    }
 }
