@@ -1,8 +1,5 @@
-package materiais;
+package br.com.yvestaba.blackjack.business.materiais;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 import static java.util.Arrays.asList;

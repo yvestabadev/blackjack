@@ -1,4 +1,4 @@
-package materiais;
+package br.com.yvestaba.blackjack.business.materiais;
 
 import java.util.List;
 
