@@ -51,6 +51,7 @@ class CalculadoraDePontosTest {
         var mao = asList(new Carta(OUROS, AS), new Carta(OUROS, NOVE), new Carta(ESPADAS, NOVE));
         ReflectionTestUtils.setField(jogador, "mao", mao);
         assertEquals(19, calcularMelhorPontuacao(jogador));
+        assertEquals(1, calcularPorJogador(jogador).size());
     }
 
     @Test

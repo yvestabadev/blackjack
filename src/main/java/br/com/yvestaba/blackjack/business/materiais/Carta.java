@@ -7,4 +7,9 @@ public record Carta(Naipe naipe, ValorCarta valor) {
     public List<Integer> getValores(){
         return valor.getValores();
     }
+
+    @Override
+    public String toString() {
+        return valor.name() + " de " + naipe.name();
+    }
 }

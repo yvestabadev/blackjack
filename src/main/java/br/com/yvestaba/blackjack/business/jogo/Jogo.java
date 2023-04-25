@@ -31,7 +31,9 @@ public class Jogo {
     public boolean proximoPasso(boolean puxar){
         if(puxar){
             jogadorDaVez.puxar(baralho);
-            return true;
+            if(StatusMao.getStatusMaoByJogador(jogadorDaVez) != StatusMao.BUST){
+                return true;
+            }
         }
         if(jogadorIterator.hasNext()){
             jogadorDaVez = jogadorIterator.next();
@@ -50,5 +52,21 @@ public class Jogo {
 
     public Map<StatusJogo, List<Jogador>> fimDeJogo(){
         return jogadores.stream().collect(Collectors.groupingBy(j -> StatusJogo.getStatusJogador(j, apostador)));
+    }
+
+    /**
+     *
+     * @return 0 se for o apostador
+     */
+    public int getIdJogador(){
+        return jogadores.indexOf(jogadorDaVez) + 1;
+    }
+
+    public int getIdJogador(Jogador jogador){
+        return jogadores.indexOf(jogador) + 1;
+    }
+
+    public Jogador getJogadorDaVez() {
+        return jogadorDaVez;
     }
 }

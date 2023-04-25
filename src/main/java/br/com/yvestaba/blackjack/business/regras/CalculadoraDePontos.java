@@ -3,6 +3,7 @@ package br.com.yvestaba.blackjack.business.regras;
 import br.com.yvestaba.blackjack.business.jogo.Jogador;
 import br.com.yvestaba.blackjack.business.materiais.Carta;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -38,7 +39,18 @@ public class CalculadoraDePontos {
         if(isNull(cartaDoisValores)){
             return singletonList(somaCartaUmValor);
         }
-        return asList(somaCartaUmValor + cartaDoisValores.size(), somaCartaUmValor + cartaDoisValores.size() + 10);
+
+        List<Integer> ret = new ArrayList<>();
+        ret.add(somaCartaUmValor + cartaDoisValores.size());
+        int somaMaior = somaCartaUmValor + cartaDoisValores.size() + 10;
+        if(somaMaior < 22) {
+            ret.add(somaMaior);
+        }
+        return ret;
+    }
+
+    public static String calcularPorJogadorString(Jogador jogador){
+        return String.join(" ou ", calcularPorJogador(jogador).stream().map(i -> String.valueOf(i)).toList());
     }
 
     public static Integer calcularMelhorPontuacao(Jogador jogador){
