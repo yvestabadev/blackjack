@@ -9,6 +9,7 @@ import br.com.yvestaba.blackjack.business.regras.StatusMao;
 import java.util.List;
 import java.util.Scanner;
 
+import static br.com.yvestaba.blackjack.business.printer.AnalisePrinter.analisar;
 import static br.com.yvestaba.blackjack.business.regras.CalculadoraDePontos.calcularPorJogadorString;
 
 public class JogoPuxarPrinter {
@@ -34,6 +35,7 @@ public class JogoPuxarPrinter {
         System.out.println(jogador + ", digite apenas números. Escolha uma opção. ");
         System.out.println("1- puxar nova carta");
         System.out.println("2- passar a vez");
+        System.out.println("3- verificar sua situação no jogo");
         Integer check;
         while(true) {
             try{
@@ -43,15 +45,21 @@ public class JogoPuxarPrinter {
                 System.out.println("Digite apenas números, 1 ou 2");
                 System.out.println("1- puxar nova carta");
                 System.out.println("2- passar a vez");
+                System.out.println("3- verificar sua situação no jogo");
                 continue;
             }
 
-            if(check != 1 && check != 2){
+            if(check != 1 && check != 2 && check != 3){
                 System.out.println();
                 System.out.println("Insira números válidos. 1 ou 2");
                 System.out.println("1- puxar nova carta");
                 System.out.println("2- passar a vez");
+                System.out.println("3- verificar sua situação no jogo");
                 continue;
+            }
+            if(check == 3){
+                analisar(jogadorDaVez);
+                return true;
             }
             if(check == 2){
                 boolean temProximaRodada = jogo.proximoPasso(false);
