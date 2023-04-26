@@ -19,9 +19,12 @@ public class AnalisePrinter {
         if(status == StatusMao.BLACKJACK || status == StatusMao.VINTE_E_UM){
             System.out.println("Você já tem a quantidade máxima de pontos! Pode parar de puxar");
             Thread.sleep(3000L);
+            return;
         }
         if(pontos.size() == 2 && jogadorDaVez.getMao().size() == 1){
             System.out.println("Puxe outra carta e tente o BlackJack! É seguro, pois sua pontuação é 1 ou 11");
+            Thread.sleep(3000L);
+            return;
         }
         if(pontos.size() == 2){
             System.out.println("Você possui duas pontuações possíveis: " + calcularPorJogadorString(jogadorDaVez) +
@@ -36,7 +39,7 @@ public class AnalisePrinter {
             return;
         }
         if(ponto < 15){
-            System.out.println("Ainda existem algumas chances de bust. Sua pontuação é " + ponto);
+            System.out.println("Existem algumas chances de bust. Sua pontuação é " + ponto);
             Thread.sleep(3000L);
             return;
         }
